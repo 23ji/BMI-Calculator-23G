@@ -9,14 +9,22 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-
-  @IBOutlet weak var bmiLabel: UILabel!
   
+  @IBOutlet weak var bmiLabel: UILabel!
   @IBOutlet weak var adviceLabel: UILabel!
   
+  let calculateBMI = CalculateViewController()
+  
+  var bmiValue: String?
+  var advice: String?
+  var backgroundColor: UIColor?
+  
   override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    super.viewDidLoad()
+    self.bmiLabel.text = bmiValue
+    self.adviceLabel.text = advice
+    self.view.backgroundColor = backgroundColor
+  }
   @IBAction func recalculateButton(_ sender: UIButton) {
     self.dismiss(animated: true)
   }
