@@ -18,5 +18,6 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
     }
   @IBAction func recalculateButton(_ sender: UIButton) {
+    self.dismiss(animated: true)
   }
 }
