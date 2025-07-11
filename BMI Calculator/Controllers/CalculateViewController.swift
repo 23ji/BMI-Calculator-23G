@@ -23,10 +23,13 @@ class CalculateViewController: UIViewController {
 
 
   @IBAction func heightSilderChanged(_ sender: UISlider) {
+    self.heightLabel.text = String(format: "%.2f", sender.value)
   }
   @IBAction func weightSilderChanged(_ sender: UISlider) {
+    self.weightLabel.text = String(format: "%.1f", sender.value)
   }
   @IBAction func calculateButton(_ sender: UIButton) {
+    
   }
 }
 
