@@ -29,7 +29,21 @@ class CalculateViewController: UIViewController {
     self.weightLabel.text = String(format: "%.1f", sender.value)
   }
   @IBAction func calculateButton(_ sender: UIButton) {
+    self.performSegue(withIdentifier: "goToResult", sender: self)
     
+    
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "goToResult" {
+      let resultVC = segue.destination as? ResultViewController
+      
+      let bmi = Float(self.weightSilder.value) / pow(Float(self.heightSilder.value), 2)
+      
+      resultVC?.bmi = String(format: "%.1f", bmi)
+      resultVC?.advice = "정상"
+      resultVC?.backgroundColor = .green
+    }
   }
 }
 
