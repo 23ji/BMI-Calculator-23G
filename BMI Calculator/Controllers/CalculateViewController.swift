@@ -41,8 +41,17 @@ class CalculateViewController: UIViewController {
       let bmi = Float(self.weightSilder.value) / pow(Float(self.heightSilder.value), 2)
       
       resultVC?.bmi = String(format: "%.1f", bmi)
-      resultVC?.advice = "정상"
-      resultVC?.backgroundColor = .green
+      
+      if bmi < 18.5{
+        resultVC?.advice = "저체중"
+        resultVC?.backgroundColor = .cyan
+      } else if bmi < 23 {
+        resultVC?.advice = "정상"
+        resultVC?.backgroundColor = .green
+      } else {
+        resultVC?.advice = "과체중"
+        resultVC?.backgroundColor = .red
+      }
     }
   }
 }
