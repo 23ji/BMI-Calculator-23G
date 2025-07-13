@@ -31,6 +31,15 @@ class CalculateViewController: UIViewController {
   
   @IBAction func calculateButton(_ sender: UIButton) {
     // BMI 계산
+    // BMI 값 전달
+    // advice 값 전달
+    // bgColor 값 전달
+    
+    // 다음 화면으로 넘어가기
+    self.performSegue(withIdentifier: "goToResult", sender: self)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
   }
 }
 
