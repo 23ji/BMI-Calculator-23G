@@ -11,12 +11,15 @@ import UIKit
 class CalculateBrain {
   private var bmi: BMI?
   
-  init() {
-  }
+  // 위의 bmi가 옵셔널이기 때문에 초기화 필수 아님! 생략 가능
+//  init() {
+//  }
   
+  //비즈니스 로직 1 : bmi 계산
   func calculateBMI(height: Float, weight: Float) {
     let value = weight / pow(height, 2)
     
+    // 비즈니스 로직 2 : bmi 결과에 따른 결과값 데이터 저장
     if value < 18.5{
       bmi = BMI(bmiValue: value, advice: "저체중", backgroundColor: .cyan)
     } else if value < 23 {
@@ -25,6 +28,8 @@ class CalculateBrain {
       bmi = BMI(bmiValue: value, advice: "과체중", backgroundColor: .red)
     }
   }
+  
+  // 함수를 통해 원하는 결과 요청할 수 있도록
   
   func getBMI() -> String {
     return String(format: "%.2f", bmi?.bmiValue ?? 0.0)

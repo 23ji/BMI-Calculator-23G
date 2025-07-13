@@ -40,6 +40,8 @@ class CalculateViewController: UIViewController {
     if segue.identifier == "goToResult" {
       let resultVC = segue.destination as? ResultViewController
       
+      // 뷰컨에서 비즈니스 로직 처리하는 것이 아니라 Model에서 결과만 요청, 받아오기
+      
       calculateBrain.calculateBMI(height: self.heightSilder.value, weight: self.weightSilder.value)
       resultVC?.bmiValue = self.calculateBrain.getBMI()
       resultVC?.advice = self.calculateBrain.getAdvice()
