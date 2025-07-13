@@ -17,6 +17,7 @@ class CalculateViewController: UIViewController {
   @IBOutlet weak var weightLabel: UILabel!
   @IBOutlet weak var weightSilder: UISlider!
   
+  var calculateBrain = CalculateBrain()
   
   override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,22 +40,10 @@ class CalculateViewController: UIViewController {
     if segue.identifier == "goToResult" {
       let resultVC = segue.destination as? ResultViewController
       
-      // 비즈니스 로직 1 : BMI 계산
-      let bmi = Float(self.weightSilder.value) / pow(Float(self.heightSilder.value), 2)
-      
-      resultVC?.bmi = String(format: "%.1f", bmi)
-      
-      // 비즈니스 로직 2 : BMI에 따른 결과 데이터 전달
-      if bmi < 18.5{
-        resultVC?.advice = "저체중"
-        resultVC?.backgroundColor = .cyan
-      } else if bmi < 23 {
-        resultVC?.advice = "정상"
-        resultVC?.backgroundColor = .green
-      } else {
-        resultVC?.advice = "과체중"
-        resultVC?.backgroundColor = .red
-      }
+      calculateBrain.calculateBMI(height: self.heightSilder.value, weight: self.weightSilder.value)
+      resultVC?.bmiValue = self.calculateBrain.getBMI()
+      resultVC?.advice = self.calculateBrain.getAdvice()
+      resultVC?.backgroundColor = self.calculateBrain.getBackgroundColor()
     }
   }
 }
